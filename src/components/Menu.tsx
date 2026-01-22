@@ -1,0 +1,11 @@
+export function Menu() {
+  return (
+    <nav>
+      <ul>
+        <li><a href="/">Início</a></li>
+        <li><a href="/sobre">Sobre</a></li>
+        <li><a href="/contato">Contato</a></li>
+      </ul>
+    </nav>
+  )
+}
