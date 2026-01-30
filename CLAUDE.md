@@ -22,6 +22,7 @@ npm run lint   # Run ESLint
 - **Styling**: Tailwind CSS v4 (using `@theme inline` syntax in globals.css)
 - **TypeScript**: Strict mode enabled
 - **Font**: Roboto (via next/font/google)
+- **Icons**: react-icons
 
 ## Architecture
 
