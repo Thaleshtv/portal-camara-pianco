@@ -55,7 +55,7 @@ export function Menu() {
               <li className="relative">
                 <button
                   onClick={() => setAccessibilityOpen(!accessibilityOpen)}
-                  className="flex items-center gap-1 hover:opacity-80"
+                  className="flex items-center gap-1 hover:opacity-80 cursor-pointer"
                 >
                   <FiSmile size={14} />
                   <span className="hidden sm:inline">Acessibilidade</span>
@@ -73,19 +73,19 @@ export function Menu() {
                       </Link>
                     </li>
                     <li>
-                      <button className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full text-left">
+                      <button className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full text-left cursor-pointer">
                         <FiToggleRight size={14} />
                         <span><u>C</u>ontraste</span>
                       </button>
                     </li>
                     <li>
-                      <button className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full text-left">
+                      <button className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full text-left cursor-pointer">
                         <FiPlusSquare size={14} />
                         <span><u>A</u>umentar</span>
                       </button>
                     </li>
                     <li>
-                      <button className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full text-left">
+                      <button className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full text-left cursor-pointer">
                         <FiMinusSquare size={14} />
                         <span><u>D</u>iminuir</span>
                       </button>
@@ -185,14 +185,14 @@ export function Menu() {
               </Link>
             </li>
             <li className="group relative">
-              <button className="flex items-center gap-1 px-4 h-[55px] hover:bg-white/10">
+              <button className="flex items-center gap-1 px-4 h-[55px] hover:bg-white/10 cursor-pointer">
                 INSTITUCIONAL <FiChevronDown size={12} />
               </button>
               <ul className="absolute top-full left-0 min-w-[220px] bg-white text-text-primary shadow-lg z-50 hidden group-hover:block">
                 <li><Link href="/acamara" className="block px-4 py-2 hover:bg-gray-100">SOBRE A CÂMARA</Link></li>
                 <li><Link href="/contatos" className="block px-4 py-2 hover:bg-gray-100">CONTATOS E ENDEREÇO</Link></li>
-                <li><Link href="/ouvidoria" className="block px-4 py-2 hover:bg-gray-100">OUVIDORIA</Link></li>
-                <li><Link href="/sic" className="block px-4 py-2 hover:bg-gray-100">E-SIC</Link></li>
+                <li><span className="block px-4 py-2 text-gray-400 cursor-not-allowed">OUVIDORIA</span></li>
+                <li><span className="block px-4 py-2 text-gray-400 cursor-not-allowed">E-SIC</span></li>
                 <li><Link href="/leis?car=11" className="block px-4 py-2 hover:bg-gray-100">LEI ORGÂNICA</Link></li>
                 <li><Link href="/regimento-interno" className="block px-4 py-2 hover:bg-gray-100">REGIMENTO INTERNO</Link></li>
                 <li><Link href="/dicionario" className="block px-4 py-2 hover:bg-gray-100">DICIONÁRIO LEGISLATIVO</Link></li>
@@ -201,7 +201,7 @@ export function Menu() {
               </ul>
             </li>
             <li className="group relative">
-              <button className="flex items-center gap-1 px-4 h-[55px] hover:bg-white/10">
+              <button className="flex items-center gap-1 px-4 h-[55px] hover:bg-white/10 cursor-pointer">
                 PARLAMENTARES <FiChevronDown size={12} />
               </button>
               <ul className="absolute top-full left-0 min-w-[320px] bg-white text-text-primary shadow-lg z-50 hidden group-hover:block">
@@ -219,7 +219,7 @@ export function Menu() {
               </ul>
             </li>
             <li className="group relative">
-              <button className="flex items-center gap-1 px-4 h-[55px] hover:bg-white/10">
+              <button className="flex items-center gap-1 px-4 h-[55px] hover:bg-white/10 cursor-pointer">
                 LEGISLATIVO <FiChevronDown size={12} />
               </button>
               <ul className="absolute top-full left-0 min-w-[220px] bg-white text-text-primary shadow-lg z-50 hidden group-hover:block">
@@ -231,7 +231,7 @@ export function Menu() {
               </ul>
             </li>
             <li className="group relative">
-              <button className="flex items-center gap-1 px-4 h-[55px] hover:bg-white/10">
+              <button className="flex items-center gap-1 px-4 h-[55px] hover:bg-white/10 cursor-pointer">
                 PROPOSIÇÕES E MATÉRIAS <FiChevronDown size={12} />
               </button>
               <ul className="absolute top-full left-0 min-w-[280px] bg-white text-text-primary shadow-lg z-50 hidden group-hover:block">
@@ -249,13 +249,8 @@ export function Menu() {
                 TRANSPARÊNCIA
               </Link>
             </li>
-            <li>
-              <Link href="/lrf" className="flex items-center px-4 h-[55px] hover:bg-white/10">
-                GESTÃO FISCAL
-              </Link>
-            </li>
             <li className="group relative">
-              <button className="flex items-center gap-1 px-4 h-[55px] hover:bg-white/10">
+              <button className="flex items-center gap-1 px-4 h-[55px] hover:bg-white/10 cursor-pointer">
                 INFORME <FiChevronDown size={12} />
               </button>
               <ul className="absolute top-full left-0 min-w-[180px] bg-white text-text-primary shadow-lg z-50 hidden group-hover:block">
