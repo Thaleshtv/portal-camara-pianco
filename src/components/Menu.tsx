@@ -194,10 +194,10 @@ export function Menu() {
                 <li><Link href="/ouvidoria" className="block px-4 py-2 hover:bg-gray-100">OUVIDORIA</Link></li>
                 <li><Link href="/sic" className="block px-4 py-2 hover:bg-gray-100">E-SIC</Link></li>
                 <li><Link href="/leis?car=11" className="block px-4 py-2 hover:bg-gray-100">LEI ORGÂNICA</Link></li>
-                <li><Link href="/leis?car=15" className="block px-4 py-2 hover:bg-gray-100">REGIMENTO INTERNO</Link></li>
+                <li><Link href="/regimento-interno" className="block px-4 py-2 hover:bg-gray-100">REGIMENTO INTERNO</Link></li>
                 <li><Link href="/dicionario" className="block px-4 py-2 hover:bg-gray-100">DICIONÁRIO LEGISLATIVO</Link></li>
-                <li><Link href="/papelvereador" className="block px-4 py-2 hover:bg-gray-100">PAPEL DO VEREADOR</Link></li>
-                <li><Link href="/papelcamara" className="block px-4 py-2 hover:bg-gray-100">PAPEL DA CÂMARA</Link></li>
+                <li><Link href="/papel-vereador" className="block px-4 py-2 hover:bg-gray-100">PAPEL DO VEREADOR</Link></li>
+                <li><Link href="/papel-camara" className="block px-4 py-2 hover:bg-gray-100">PAPEL DA CÂMARA</Link></li>
               </ul>
             </li>
             <li className="group relative">
