@@ -230,20 +230,7 @@ export function Menu() {
                 <li><Link href="/legislaturas" className="block px-4 py-2 hover:bg-gray-100">LEGISLATURA</Link></li>
               </ul>
             </li>
-            <li className="group relative">
-              <button className="flex items-center gap-1 px-4 h-[55px] hover:bg-white/10 cursor-pointer">
-                PROPOSIÇÕES E MATÉRIAS <FiChevronDown size={12} />
-              </button>
-              <ul className="absolute top-full left-0 min-w-[280px] bg-white text-text-primary shadow-lg z-50 hidden group-hover:block">
-                <li><Link href="/materias?tipo=29" className="block px-4 py-2 hover:bg-gray-100">ATAS</Link></li>
-                <li><Link href="/materias?tipo=3" className="block px-4 py-2 hover:bg-gray-100">MOÇÕES</Link></li>
-                <li><Link href="/materias?tipo=11" className="block px-4 py-2 hover:bg-gray-100">PROJETO DE DECRETO DO LEGISLATIVO</Link></li>
-                <li><Link href="/materias?tipo=7" className="block px-4 py-2 hover:bg-gray-100">PROJETO DE LEI ORDINÁRIA</Link></li>
-                <li><Link href="/materias?tipo=9" className="block px-4 py-2 hover:bg-gray-100">PROJETO DE RESOLUÇÃO</Link></li>
-                <li><Link href="/materias?tipo=1" className="block px-4 py-2 hover:bg-gray-100">REQUERIMENTO</Link></li>
-                <li><Link href="/materias?tipo=26" className="block px-4 py-2 hover:bg-gray-100">VOTO DE PESAR</Link></li>
-              </ul>
-            </li>
+            {/* PROPOSIÇÕES E MATÉRIAS - oculto por enquanto */}
             <li>
               <Link href="/acessoainformacao" className="flex items-center px-4 h-[55px] hover:bg-white/10">
                 TRANSPARÊNCIA
