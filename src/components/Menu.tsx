@@ -1,27 +1,18 @@
 "use client"
 
-import { useState } from "react"
 import Link from "next/link"
 import {
   FiInfo,
-  FiHeadphones,
-  FiSearch,
-  FiSmile,
   FiFacebook,
   FiYoutube,
   FiInstagram,
   FiMail,
-  FiToggleRight,
-  FiPlusSquare,
-  FiMinusSquare,
   FiHome,
   FiChevronDown
 } from "react-icons/fi"
-import { BiSitemap, BiHandicap } from "react-icons/bi"
 import Image from "next/image"
 
 export function Menu() {
-  const [accessibilityOpen, setAccessibilityOpen] = useState(false)
 
   return (
     <header>
@@ -38,81 +29,6 @@ export function Menu() {
                 </Link>
               </li>
 
-              <li>
-                <Link href="/ouvidoria" className="flex items-center gap-1 hover:opacity-80">
-                  <FiHeadphones size={14} />
-                  <span className="hidden sm:inline">Ouvidoria/e-Sic</span>
-                </Link>
-              </li>
-
-              <li>
-                <Link href="/pesquisa" className="flex items-center gap-1 hover:opacity-80">
-                  <FiSearch size={14} />
-                  <span className="hidden sm:inline">Pesquisa</span>
-                </Link>
-              </li>
-
-              <li className="relative">
-                <button
-                  onClick={() => setAccessibilityOpen(!accessibilityOpen)}
-                  className="flex items-center gap-1 hover:opacity-80 cursor-pointer"
-                >
-                  <FiSmile size={14} />
-                  <span className="hidden sm:inline">Acessibilidade</span>
-                </button>
-
-                {accessibilityOpen && (
-                  <ul className="absolute top-full left-0 mt-1 min-w-[150px] bg-white text-text-primary rounded shadow-lg z-50 font-normal">
-                    <li>
-                      <Link
-                        href="/acessibilidade"
-                        className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"
-                      >
-                        <FiSmile size={14} />
-                        <span>Sobre</span>
-                      </Link>
-                    </li>
-                    <li>
-                      <button className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full text-left cursor-pointer">
-                        <FiToggleRight size={14} />
-                        <span><u>C</u>ontraste</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full text-left cursor-pointer">
-                        <FiPlusSquare size={14} />
-                        <span><u>A</u>umentar</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 w-full text-left cursor-pointer">
-                        <FiMinusSquare size={14} />
-                        <span><u>D</u>iminuir</span>
-                      </button>
-                    </li>
-                    <li>
-                      <a
-                        href="https://www.gov.br/governodigital/pt-br/vlibras"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"
-                      >
-                        <BiHandicap size={14} />
-                        <span>Libras</span>
-                      </a>
-                    </li>
-                    <li>
-                      <Link
-                        href="/mapadosite"
-                        className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100"
-                      >
-                        <BiSitemap size={14} />
-                        <span>Mapa do site</span>
-                      </Link>
-                    </li>
-                  </ul>
-                )}
-              </li>
             </ul>
 
             {/* Redes Sociais */}
@@ -226,8 +142,8 @@ export function Menu() {
                 <li><Link href="/vereadores" className="block px-4 py-2 hover:bg-gray-100">GALERIA DE VEREADORES</Link></li>
                 <li><Link href="/mesadiretora" className="block px-4 py-2 hover:bg-gray-100">MESA DIRETORA</Link></li>
                 <li><Link href="/comissoes" className="block px-4 py-2 hover:bg-gray-100">COMISSÕES</Link></li>
-                <li><Link href="/sessao" className="block px-4 py-2 hover:bg-gray-100">SESSÕES</Link></li>
-                <li><Link href="/legislaturas" className="block px-4 py-2 hover:bg-gray-100">LEGISLATURA</Link></li>
+                <li><span className="block px-4 py-2 text-gray-400 cursor-not-allowed">SESSÕES</span></li>
+                <li><span className="block px-4 py-2 text-gray-400 cursor-not-allowed">LEGISLATURA</span></li>
               </ul>
             </li>
             {/* PROPOSIÇÕES E MATÉRIAS - oculto por enquanto */}
@@ -256,16 +172,7 @@ export function Menu() {
                 <li><Link href="/licitacoes" className="block px-4 py-2 hover:bg-gray-100">LICITAÇÕES</Link></li>
               </ul>
             </li>
-            <li className="group relative">
-              <button className="flex items-center gap-1 px-4 h-[55px] hover:bg-white/10 cursor-pointer">
-                INFORME <FiChevronDown size={12} />
-              </button>
-              <ul className="absolute top-full left-0 min-w-[180px] bg-white text-text-primary shadow-lg z-50 hidden group-hover:block">
-                <li><Link href="/noticias" className="block px-4 py-2 hover:bg-gray-100">NOTÍCIAS</Link></li>
-                <li><Link href="/videos" className="block px-4 py-2 hover:bg-gray-100">VÍDEOS</Link></li>
-                <li><Link href="/links" className="block px-4 py-2 hover:bg-gray-100">LINKS ÚTEIS</Link></li>
-              </ul>
-            </li>
+            {/* INFORME - oculto por enquanto */}
           </ul>
         </div>
       </nav>

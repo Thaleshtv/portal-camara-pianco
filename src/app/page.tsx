@@ -3,73 +3,7 @@
 import { useRef } from "react"
 import Link from "next/link"
 import { BsPeopleFill, BsMegaphoneFill, BsFileTextFill, BsFileEarmarkPdfFill, BsPersonLinesFill, BsFilePdfFill, BsBoxArrowUpRight, BsCheckCircleFill, BsChevronLeft, BsChevronRight } from "react-icons/bs"
-
-interface NewsItem {
-  id: number
-  slug: string
-  image: string
-  tag: string
-  title: string
-  description: string
-  date: string
-}
-
-const news: NewsItem[] = [
-  {
-    id: 610,
-    slug: "i-capacitacao-legislativa-e-administracao-municipa",
-    image: "/fotos/610/Capa610.jpg",
-    tag: "#Agenda",
-    title: "I Capacitação Legislativa e Administração Municipal em Piancó",
-    description: "Fortalecendo o conhecimento, qualificando a gestão e construindo o futuro das cidades",
-    date: "2026-01-10",
-  },
-  {
-    id: 609,
-    slug: "camara-realiza-17-e-18-sessao-extraordinaria-e-apr",
-    image: "/fotos/609/Capa609.jpg",
-    tag: "#Sessão",
-    title: "Câmara realiza 17ª e 18ª Sessão Extraordinária e aprova importante projeto para valorização dos agentes de saúde",
-    description: "Projeto de Lei nº 47/2025 garante incentivo financeiro adicional aos Agentes Comunitários de Saúde e de Combate a Endemias para o ano de 2026",
-    date: "2025-12-22",
-  },
-  {
-    id: 608,
-    slug: "unidade-e-modernidade-camara-de-pianco-aprova-novo",
-    image: "/fotos/608/Capa608.jpg",
-    tag: "#Sessão",
-    title: "Unidade e Modernidade: Câmara de Piancó Aprova Novo Regimento Interno por Consenso",
-    description: "Novo Regimento Interno entra em vigor nos primeiros dias de 2026",
-    date: "2025-11-24",
-  },
-  {
-    id: 607,
-    slug: "camara-municipal-de-pianco-marca-presenca-no-1-enc",
-    image: "/fotos/607/Capa607.jpg",
-    tag: "#Informação",
-    title: "Câmara Municipal de Piancó marca presença no 1º Encontro Municipalista da Paraíba",
-    description: "Evento discutiu o fortalecimento da advocacia municipalista e a importância da boa gestão pública",
-    date: "2025-11-11",
-  },
-  {
-    id: 606,
-    slug: "vereadores-iniciam-discussoes-sobre-o-novo-regimen",
-    image: "/fotos/606/Capa606.jpg",
-    tag: "#Reunião",
-    title: "Vereadores iniciam discussões sobre o novo Regimento Interno da Câmara Municipal de Piancó",
-    description: "Parlamentares e assessoria jurídica alinham proposta de modernização e atualização das normas internas da Casa Legislativa",
-    date: "2025-11-06",
-  },
-  {
-    id: 605,
-    slug: "camara-municipal-de-pianco-realiza-19-sessao-ordin",
-    image: "/fotos/605/Capa605.jpg",
-    tag: "#Sessão",
-    title: "Câmara Municipal de Piancó realiza 19ª Sessão Ordinária e entrega Título de Cidadão Piancoense",
-    description: "Sessão foi marcada pela aprovação de matérias legislativas e pela homenagem a um cidadão que contribui para o fortalecimento do comércio local.",
-    date: "2025-10-10",
-  },
-]
+import { noticias } from "@/data/noticias"
 
 interface Vereador {
   id: number
@@ -245,7 +179,7 @@ export default function Home() {
 
           {/* News Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {news.map((item) => (
+            {noticias.map((item) => (
               <article key={item.id} className="overflow-hidden">
                 <Link href={`/informa/${item.id}/${item.slug}`} className="block">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
