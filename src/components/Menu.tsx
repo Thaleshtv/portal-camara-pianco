@@ -231,10 +231,30 @@ export function Menu() {
               </ul>
             </li>
             {/* PROPOSIÇÕES E MATÉRIAS - oculto por enquanto */}
-            <li>
-              <Link href="/acessoainformacao" className="flex items-center px-4 h-[55px] hover:bg-white/10">
-                TRANSPARÊNCIA
-              </Link>
+            <li className="group relative">
+              <button className="flex items-center gap-1 px-4 h-[55px] hover:bg-white/10 cursor-pointer">
+                TRANSPARÊNCIA <FiChevronDown size={12} />
+              </button>
+              <ul className="absolute top-full left-0 min-w-[300px] bg-white text-text-primary shadow-lg z-50 hidden group-hover:block">
+                <li><Link href="/acessoainformacao" className="block px-4 py-2 hover:bg-gray-100">PORTAL DA TRANSPARÊNCIA</Link></li>
+                <li className="relative group/docs">
+                  <span className="flex items-center justify-between px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                    DOCUMENTOS OFICIAIS <FiChevronDown size={12} className="-rotate-90" />
+                  </span>
+                  <ul className="absolute left-full top-0 min-w-[280px] bg-white text-text-primary shadow-lg z-50 hidden group-hover/docs:block">
+                    <li><Link href="/documentos?tipo=decretos-legislativos" className="block px-4 py-2 hover:bg-gray-100">DECRETOS LEGISLATIVOS</Link></li>
+                    <li><Link href="/documentos?tipo=resolucoes" className="block px-4 py-2 hover:bg-gray-100">RESOLUÇÕES</Link></li>
+                    <li><Link href="/documentos?tipo=atos-mesa-diretora" className="block px-4 py-2 hover:bg-gray-100">ATOS DA MESA DIRETORA</Link></li>
+                    <li><Link href="/documentos?tipo=atos-presidencia" className="block px-4 py-2 hover:bg-gray-100">ATOS DA PRESIDÊNCIA</Link></li>
+                    <li><Link href="/documentos?tipo=portarias-mesa-diretora" className="block px-4 py-2 hover:bg-gray-100">PORTARIAS DA MESA DIRETORA</Link></li>
+                    <li><Link href="/documentos?tipo=portarias-presidencia" className="block px-4 py-2 hover:bg-gray-100">PORTARIAS DA PRESIDÊNCIA</Link></li>
+                    <li><Link href="/documentos?tipo=atas-sessoes-ordinarias" className="block px-4 py-2 hover:bg-gray-100">ATAS DAS SESSÕES ORDINÁRIAS</Link></li>
+                    <li><Link href="/documentos?tipo=atas-sessoes-extraordinarias" className="block px-4 py-2 hover:bg-gray-100">ATAS DAS SESSÕES EXTRAORDINÁRIAS</Link></li>
+                  </ul>
+                </li>
+                <li><Link href="/diario-oficial" className="block px-4 py-2 hover:bg-gray-100">DIÁRIO OFICIAL DO PODER LEGISLATIVO</Link></li>
+                <li><Link href="/licitacoes" className="block px-4 py-2 hover:bg-gray-100">LICITAÇÕES</Link></li>
+              </ul>
             </li>
             <li className="group relative">
               <button className="flex items-center gap-1 px-4 h-[55px] hover:bg-white/10 cursor-pointer">
