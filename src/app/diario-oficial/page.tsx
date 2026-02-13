@@ -11,15 +11,7 @@ export interface DiarioOficial {
   arquivoUrl: string
 }
 
-const diarios: DiarioOficial[] = [
-  {
-    id: 1,
-    edicao: "001/2026",
-    data: "12/02/2026",
-    descricao: "Edição de 12 de Fevereiro de 2026",
-    arquivoUrl: "/documents/Edição de 12 de FEVEREIRO de 2026.pdf",
-  },
-]
+const diarios: DiarioOficial[] = []
 
 export default function DiarioOficial() {
   const [periodoInicio, setPeriodoInicio] = useState("")
