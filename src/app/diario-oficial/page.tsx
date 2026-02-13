@@ -11,6 +11,16 @@ export interface DiarioOficial {
   arquivoUrl: string
 }
 
+const diarios: DiarioOficial[] = [
+  {
+    id: 1,
+    edicao: "001/2026",
+    data: "12/02/2026",
+    descricao: "Edição de 12 de Fevereiro de 2026",
+    arquivoUrl: "/documents/Edição de 12 de FEVEREIRO de 2026.pdf",
+  },
+]
+
 export default function DiarioOficial() {
   const [periodoInicio, setPeriodoInicio] = useState("")
   const [periodoFim, setPeriodoFim] = useState("")
@@ -117,12 +127,46 @@ export default function DiarioOficial() {
               Diário Oficial do Poder Legislativo
             </h3>
           </div>
-          <div className="p-12 flex flex-col items-center justify-center text-center">
-            <BsInboxFill className="text-gray-300 mb-4" size={48} />
-            <p className="text-gray-500 text-sm">
-              Nenhum diário oficial encontrado.
-            </p>
-          </div>
+          {diarios.length === 0 ? (
+            <div className="p-12 flex flex-col items-center justify-center text-center">
+              <BsInboxFill className="text-gray-300 mb-4" size={48} />
+              <p className="text-gray-500 text-sm">
+                Nenhum diário oficial encontrado.
+              </p>
+            </div>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm text-left">
+                <thead className="bg-gray-50 text-text-primary/70 text-xs uppercase">
+                  <tr>
+                    <th className="px-6 py-3">Edição</th>
+                    <th className="px-6 py-3">Data</th>
+                    <th className="px-6 py-3">Descrição</th>
+                    <th className="px-6 py-3 text-center">Arquivo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {diarios.map((diario) => (
+                    <tr key={diario.id} className="border-t border-gray-100 hover:bg-gray-50">
+                      <td className="px-6 py-3 font-medium text-text-primary">{diario.edicao}</td>
+                      <td className="px-6 py-3 text-text-primary/70">{diario.data}</td>
+                      <td className="px-6 py-3 text-text-primary/70">{diario.descricao}</td>
+                      <td className="px-6 py-3 text-center">
+                        <a
+                          href={diario.arquivoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-blue-primary hover:underline text-xs font-medium"
+                        >
+                          <BsDownload size={14} /> PDF
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
       </div>
     </section>
