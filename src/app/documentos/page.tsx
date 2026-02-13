@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { Suspense, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { BsSearch, BsXCircle, BsDownload, BsInboxFill } from "react-icons/bs"
 
@@ -25,7 +25,7 @@ const TIPOS_DOCUMENTOS: Record<string, string> = {
   "atas-sessoes-extraordinarias": "Atas das Sessões Extraordinárias",
 }
 
-export default function Documentos() {
+function DocumentosContent() {
   const searchParams = useSearchParams()
   const tipoParam = searchParams.get("tipo") ?? ""
   const tituloTipo = TIPOS_DOCUMENTOS[tipoParam] ?? "Documentos Oficiais"
@@ -144,5 +144,13 @@ export default function Documentos() {
         </div>
       </div>
     </section>
+  )
+}
+
+export default function Documentos() {
+  return (
+    <Suspense>
+      <DocumentosContent />
+    </Suspense>
   )
 }
