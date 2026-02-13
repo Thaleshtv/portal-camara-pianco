@@ -113,10 +113,8 @@ function VereadoresCarousel({ vereadores }: { vereadores: Vereador[] }) {
 const quickLinks = [
   { href: "/parlamentares", icon: BsPersonLinesFill, label: "Vereadores" },
   { href: "/comissoes", icon: BsPeopleFill, label: "Comissões" },
-  { href: "/sessao", icon: BsMegaphoneFill, label: "Sessões" },
-  { href: "/materias", icon: BsFileTextFill, label: "Matérias" },
-  { href: "/leis", icon: BsFilePdfFill, label: "Leis" },
-  { href: "/publicacoes", icon: BsFileEarmarkPdfFill, label: "Publicações" },
+  { href: "/acessoainformacao", icon: BsFileTextFill, label: "Transparência" },
+  { href: "/licitacoes", icon: BsFileEarmarkPdfFill, label: "Licitações" },
 ]
 
 export default function Home() {
@@ -125,12 +123,12 @@ export default function Home() {
       {/* Quick Links */}
       <section className="bg-[#D0DEEC] py-6">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+          <div className="flex flex-wrap justify-center gap-3">
             {quickLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="bg-blue-primary hover:bg-blue-primary/90 transition-colors rounded-lg"
+                className="bg-blue-primary hover:bg-blue-primary/90 transition-colors rounded-lg w-full sm:w-[calc(50%-0.375rem)] lg:w-[200px]"
               >
                 <div className="flex items-center justify-center gap-2 px-5 py-4 text-white">
                   <link.icon size={20} />
