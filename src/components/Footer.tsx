@@ -45,7 +45,7 @@ export function Footer() {
               <ul className="space-y-2 text-[14px]">
                 <li className="flex items-center gap-2">
                   <BsPostcard size={14} />
-                  <span>CNPJ: 08.560.781/0001-80</span>
+                  <span>CNPJ 08.560.781/0001-80</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <FiMapPin size={14} />
