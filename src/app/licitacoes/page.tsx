@@ -38,6 +38,18 @@ const licitacoes: Licitacao[] = [
       { nome: "Edital Dispensa 00002-2026 - Combustível", url: "/documents/EDITAL DISPENSA 00002-2026 COMBUSTIVEL.pdf" },
     ],
   },
+  {
+    id: 3,
+    numero: "00003/2026",
+    modalidade: "Dispensa de Licitação",
+    objeto: "Painel de Votação",
+    dataPublicacao: "06/03/2026",
+    status: "Publicado",
+    arquivos: [
+      { nome: "Aviso de Dispensa 00003-2026 - Painel de Votação", url: "/documents/AVISO DE DISPENSA 00003-2026 PAINEL DE VOTAÇÃO.pdf" },
+      { nome: "Edital Dispensa 00003-2026 - Painel de Votação", url: "/documents/EDITAL DISPENSA 00003-2026 PAINEL DE VOTAÇÃO.pdf" },
+    ],
+  },
 ]
 
 export default function Licitacoes() {
