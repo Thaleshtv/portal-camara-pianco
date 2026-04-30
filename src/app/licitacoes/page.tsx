@@ -1,56 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import { BsSearch, BsXCircle, BsDownload, BsFileEarmarkPdf } from "react-icons/bs"
-
-export interface Licitacao {
-  id: number
-  numero: string
-  modalidade: string
-  objeto: string
-  dataPublicacao: string
-  status: string
-  arquivos: { nome: string; url: string }[]
-}
-
-const licitacoes: Licitacao[] = [
-  {
-    id: 1,
-    numero: "00001/2026",
-    modalidade: "Dispensa de Licitação",
-    objeto: "Locação",
-    dataPublicacao: "12/02/2026",
-    status: "Publicado",
-    arquivos: [
-      { nome: "Aviso de Dispensa 00001-2026 - Locação", url: "/documents/AVISO DE DISPENSA 00001-2026 LOCAÇÃO.pdf" },
-      { nome: "Edital Dispensa 00001-2026 - Locação", url: "/documents/EDITAL DISPENSA 00001-2026 LOCAÇÃO.pdf" },
-    ],
-  },
-  {
-    id: 2,
-    numero: "00002/2026",
-    modalidade: "Dispensa de Licitação",
-    objeto: "Combustível",
-    dataPublicacao: "12/02/2026",
-    status: "Publicado",
-    arquivos: [
-      { nome: "Aviso de Dispensa 00002-2026 - Combustível", url: "/documents/AVISO DE DISPENSA 00002-2026 COMBUSTIVEL(1).pdf" },
-      { nome: "Edital Dispensa 00002-2026 - Combustível", url: "/documents/EDITAL DISPENSA 00002-2026 COMBUSTIVEL.pdf" },
-    ],
-  },
-  {
-    id: 3,
-    numero: "00003/2026",
-    modalidade: "Dispensa de Licitação",
-    objeto: "Painel de Votação",
-    dataPublicacao: "06/03/2026",
-    status: "Publicado",
-    arquivos: [
-      { nome: "Aviso de Dispensa 00003-2026 - Painel de Votação", url: "/documents/AVISO DE DISPENSA 00003-2026 PAINEL DE VOTAÇÃO.pdf" },
-      { nome: "Edital Dispensa 00003-2026 - Painel de Votação", url: "/documents/EDITAL DISPENSA 00003-2026 PAINEL DE VOTAÇÃO.pdf" },
-    ],
-  },
-]
+import Link from "next/link"
+import { BsSearch, BsXCircle, BsDownload, BsFileEarmarkPdf, BsArrowRight } from "react-icons/bs"
+import { licitacoes } from "@/data/licitacoes"
 
 export default function Licitacoes() {
   const [periodoInicio, setPeriodoInicio] = useState("")
@@ -185,23 +138,32 @@ export default function Licitacoes() {
           <div className="p-6">
             <div className="space-y-4">
               {licitacoes.map((licitacao) => (
-                <div key={licitacao.id} className="border border-gray-200 rounded-lg p-4">
+                <div
+                  key={licitacao.id}
+                  className="border border-gray-200 rounded-lg p-4 hover:border-blue-primary hover:shadow-md transition-all"
+                >
                   <div className="flex flex-col gap-3">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                      <h4 className="text-blue-primary font-bold uppercase text-sm">
+                    <Link
+                      href={`/licitacoes/${licitacao.slug}`}
+                      className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 group"
+                    >
+                      <h4 className="text-blue-primary font-bold uppercase text-sm group-hover:underline">
                         Dispensa Nº {licitacao.numero}
-                        <span className="font-normal italic text-xs text-text-primary/60 ml-2">
+                        <span className="font-normal italic text-xs text-text-primary/60 ml-2 normal-case no-underline">
                           Publicado em {licitacao.dataPublicacao}
                         </span>
                       </h4>
                       <span className="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full w-fit">
                         {licitacao.status}
                       </span>
-                    </div>
-                    <div className="text-sm text-text-primary/70">
+                    </Link>
+                    <Link
+                      href={`/licitacoes/${licitacao.slug}`}
+                      className="text-sm text-text-primary/70 hover:text-blue-primary transition-colors"
+                    >
                       <strong>Modalidade:</strong> {licitacao.modalidade} &bull; <strong>Objeto:</strong> {licitacao.objeto}
-                    </div>
-                    <div className="flex flex-wrap gap-2">
+                    </Link>
+                    <div className="flex flex-wrap items-center gap-2">
                       {licitacao.arquivos.map((arquivo) => (
                         <a
                           key={arquivo.url}
@@ -214,6 +176,12 @@ export default function Licitacoes() {
                           {arquivo.nome}
                         </a>
                       ))}
+                      <Link
+                        href={`/licitacoes/${licitacao.slug}`}
+                        className="inline-flex items-center gap-2 bg-blue-primary/10 text-blue-primary hover:bg-blue-primary hover:text-white text-xs font-medium px-3 py-2 rounded transition-colors ml-auto"
+                      >
+                        Ver detalhes <BsArrowRight size={14} />
+                      </Link>
                     </div>
                   </div>
                 </div>
