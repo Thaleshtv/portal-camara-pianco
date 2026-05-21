@@ -11,7 +11,22 @@ export interface DiarioOficial {
   arquivoUrl: string
 }
 
-const diarios: DiarioOficial[] = []
+const diarios: DiarioOficial[] = [
+  {
+    id: 2,
+    edicao: "Edição de 21 de maio de 2026",
+    data: "21/05/2026",
+    descricao: "Diário Oficial do Poder Legislativo - Edição de 21 de maio de 2026",
+    arquivoUrl: "/documents/Diário Oficial do Poder Legislativo - Edição de 21 de maio 2026.pdf",
+  },
+  {
+    id: 1,
+    edicao: "Edição de 12 de fevereiro de 2026",
+    data: "12/02/2026",
+    descricao: "Diário Oficial do Poder Legislativo - Edição de 12 de fevereiro de 2026",
+    arquivoUrl: "/documents/Edição de 12 de FEVEREIRO de 2026.pdf",
+  },
+]
 
 export default function DiarioOficial() {
   const [periodoInicio, setPeriodoInicio] = useState("")
