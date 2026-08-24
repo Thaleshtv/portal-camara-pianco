@@ -107,6 +107,87 @@ export const licitacoes: Licitacao[] = [
       },
     ],
   },
+  {
+    id: 4,
+    slug: "dispensa-de-licitacao-no-00004-2026",
+    numero: "00004/2026",
+    modalidade: MODALIDADE,
+    objeto: "Organização e arquivamento de documentos",
+    objetoCompleto:
+      "Contratação de empresa especializada para a execução de serviços técnicos na seleção, classificação, catalogação, organização, arquivamento e identificação de documentos gerados pela Câmara Municipal de Piancó-PB.",
+    unidadeGestora: UNIDADE_GESTORA,
+    cnpj: CNPJ,
+    dataPublicacao: "16/03/2026",
+    dataRealizacao: "19/03/2026 às 13:00",
+    participante: "Aguardando participantes",
+    cnpjParticipante: "-",
+    valorProposta: "-",
+    status: "Publicado",
+    arquivos: [
+      {
+        nome: "Aviso de Dispensa 00004-2026 - Organização de Documentos",
+        url: "/documents/AVISO DE DISPENSA 00004-2026 ORGANIZAÇÃO.pdf",
+      },
+      {
+        nome: "Edital Dispensa 00004-2026 - Organização de Documentos",
+        url: "/documents/EDITAL DISPENSA 00004-2026 ORGANIZAÇÃO.pdf",
+      },
+    ],
+  },
+  {
+    id: 5,
+    slug: "dispensa-de-licitacao-no-00005-2026",
+    numero: "00005/2026",
+    modalidade: MODALIDADE,
+    objeto: "Digitalização de documentos",
+    objetoCompleto:
+      "Contratação de empresa especializada para a execução de serviços técnicos de classificação, indexação e digitalização de documentos gerados pela Câmara Municipal de Piancó-PB.",
+    unidadeGestora: UNIDADE_GESTORA,
+    cnpj: CNPJ,
+    dataPublicacao: "16/03/2026",
+    dataRealizacao: "19/03/2026 às 13:00",
+    participante: "Aguardando participantes",
+    cnpjParticipante: "-",
+    valorProposta: "-",
+    status: "Publicado",
+    arquivos: [
+      {
+        nome: "Aviso de Dispensa 00005-2026 - Digitalização de Documentos",
+        url: "/documents/AVISO DE DISPENSA 00005-2026 DIGITALIZAÇÃO.pdf",
+      },
+      {
+        nome: "Edital Dispensa 00005-2026 - Digitalização de Documentos",
+        url: "/documents/EDITAL DISPENSA 00005-2026 DIGITALIZAÇÃO.pdf",
+      },
+    ],
+  },
+  {
+    id: 6,
+    slug: "dispensa-de-licitacao-no-00006-2026",
+    numero: "00006/2026",
+    modalidade: MODALIDADE,
+    objeto: "Ponto eletrônico",
+    objetoCompleto:
+      "Contratação de pessoa jurídica para prestar serviços técnicos de coleta de ponto eletrônico e emissão de relatório da Câmara Municipal de Piancó-PB.",
+    unidadeGestora: UNIDADE_GESTORA,
+    cnpj: CNPJ,
+    dataPublicacao: "13/04/2026",
+    dataRealizacao: "16/04/2026 às 13:00",
+    participante: "Aguardando participantes",
+    cnpjParticipante: "-",
+    valorProposta: "-",
+    status: "Publicado",
+    arquivos: [
+      {
+        nome: "Aviso de Dispensa 00006-2026 - Ponto Eletrônico",
+        url: "/documents/AVISO DE DISPENSA 00006-2026 PONTO ELETRONICO.pdf",
+      },
+      {
+        nome: "Edital Dispensa 00006-2026 - Ponto Eletrônico",
+        url: "/documents/EDITAL DISPENSA 00006-2026 PONTO ELETRONICO.pdf",
+      },
+    ],
+  },
 ]
 
 export function getLicitacaoBySlug(slug: string): Licitacao | undefined {

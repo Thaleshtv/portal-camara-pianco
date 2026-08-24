@@ -13,6 +13,13 @@ export interface DiarioOficial {
 
 const diarios: DiarioOficial[] = [
   {
+    id: 3,
+    edicao: "Edição de 07 de agosto de 2026",
+    data: "07/08/2026",
+    descricao: "Diário Oficial do Poder Legislativo - Edição de 07 de agosto de 2026",
+    arquivoUrl: "/documents/Diário Oficial do Poder Legislativo - Edição de 07 de agosto 2026.pdf",
+  },
+  {
     id: 2,
     edicao: "Edição de 21 de maio de 2026",
     data: "21/05/2026",
