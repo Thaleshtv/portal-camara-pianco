@@ -269,6 +269,60 @@ export const licitacoes: Licitacao[] = [
       },
     ],
   },
+  {
+    id: 10,
+    slug: "dispensa-de-licitacao-no-00010-2026",
+    numero: "00010/2026",
+    modalidade: MODALIDADE,
+    objeto: "Aquisição de gêneros alimentícios",
+    objetoCompleto:
+      "Aquisição de gêneros alimentícios para manutenção das demandas da Câmara Municipal de Piancó-PB.",
+    unidadeGestora: UNIDADE_GESTORA,
+    cnpj: CNPJ,
+    dataPublicacao: "19/08/2026",
+    dataRealizacao: "24/08/2026 às 13:00",
+    participante: "Aguardando participantes",
+    cnpjParticipante: "-",
+    valorProposta: "-",
+    status: "Publicado",
+    arquivos: [
+      {
+        nome: "Aviso de Dispensa 00010-2026 - Gêneros Alimentícios",
+        url: "/documents/AVISO DE DISPENSA 00010-2026 GENEROS ALIMENTICIOS.pdf",
+      },
+      {
+        nome: "Edital Dispensa 00010-2026 - Gêneros Alimentícios",
+        url: "/documents/EDITAL DISPENSA 00010-2026 GENEROS ALIMENTICIOS.pdf",
+      },
+    ],
+  },
+  {
+    id: 11,
+    slug: "dispensa-de-licitacao-no-00011-2026",
+    numero: "00011/2026",
+    modalidade: MODALIDADE,
+    objeto: "Locação de sistemas (softwares)",
+    objetoCompleto:
+      "Contratação de empresa especializada para prestar serviços de locação de sistemas diversos (softwares) para atender a demanda da Câmara Municipal de Piancó-PB.",
+    unidadeGestora: UNIDADE_GESTORA,
+    cnpj: CNPJ,
+    dataPublicacao: "19/08/2026",
+    dataRealizacao: "24/08/2026 às 13:00",
+    participante: "Aguardando participantes",
+    cnpjParticipante: "-",
+    valorProposta: "-",
+    status: "Publicado",
+    arquivos: [
+      {
+        nome: "Aviso de Dispensa 00011-2026 - Softwares",
+        url: "/documents/AVISO DE DISPENSA 00011-2026 SOFTWARES.pdf",
+      },
+      {
+        nome: "Edital Dispensa 00011-2026 - Softwares",
+        url: "/documents/EDITAL DISPENSA 00011-2026 SOFTWARES.pdf",
+      },
+    ],
+  },
 ]
 
 export function getLicitacaoBySlug(slug: string): Licitacao | undefined {
