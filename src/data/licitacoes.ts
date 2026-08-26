@@ -188,6 +188,87 @@ export const licitacoes: Licitacao[] = [
       },
     ],
   },
+  {
+    id: 7,
+    slug: "dispensa-de-licitacao-no-00007-2026",
+    numero: "00007/2026",
+    modalidade: MODALIDADE,
+    objeto: "Fornecimento de coffee break",
+    objetoCompleto:
+      "Contratação de empresa especializada para prestar os serviços de fornecimento de coffee break a serem servidos em reuniões, confraternizações e eventos promovidos pela Câmara Municipal de Piancó-PB.",
+    unidadeGestora: UNIDADE_GESTORA,
+    cnpj: CNPJ,
+    dataPublicacao: "16/06/2026",
+    dataRealizacao: "19/06/2026 às 13:00",
+    participante: "Aguardando participantes",
+    cnpjParticipante: "-",
+    valorProposta: "-",
+    status: "Publicado",
+    arquivos: [
+      {
+        nome: "Aviso de Dispensa 00007-2026 - Coffee Break",
+        url: "/documents/AVISO DE DISPENSA 00007-2026 COFFEE BREAK.pdf",
+      },
+      {
+        nome: "Edital Dispensa 00007-2026 - Coffee Break",
+        url: "/documents/EDITAL DISPENSA 00007-2026 COFFEE BREAK.pdf",
+      },
+    ],
+  },
+  {
+    id: 8,
+    slug: "dispensa-de-licitacao-no-00008-2026",
+    numero: "00008/2026",
+    modalidade: MODALIDADE,
+    objeto: "TV Câmara e comunicação institucional",
+    objetoCompleto:
+      "Contratação de empresa especializada para prestação de serviços técnicos continuados de comunicação institucional, incluindo a implantação, operação e manutenção da TV Câmara, transmissão ao vivo das sessões legislativas e da Escola do Poder Legislativo, locação, instalação e manutenção de equipamentos audiovisuais, gerenciamento de plataformas digitais oficiais, bem como suporte técnico contínuo aos sistemas e infraestrutura utilizados pelo Poder Legislativo Municipal.",
+    unidadeGestora: UNIDADE_GESTORA,
+    cnpj: CNPJ,
+    dataPublicacao: "16/06/2026",
+    dataRealizacao: "19/06/2026 às 13:00",
+    participante: "Aguardando participantes",
+    cnpjParticipante: "-",
+    valorProposta: "-",
+    status: "Publicado",
+    arquivos: [
+      {
+        nome: "Aviso de Dispensa 00008-2026 - TV Câmara",
+        url: "/documents/AVISO DE DISPENSA 00008-2026 TV CAMARA.pdf",
+      },
+      {
+        nome: "Edital Dispensa 00008-2026 - TV Câmara",
+        url: "/documents/EDITAL DISPENSA 00008-2026 TV CAMARA.pdf",
+      },
+    ],
+  },
+  {
+    id: 9,
+    slug: "dispensa-de-licitacao-no-00009-2026",
+    numero: "00009/2026",
+    modalidade: MODALIDADE,
+    objeto: "Material elétrico, hidráulico e de pintura",
+    objetoCompleto:
+      "Aquisição de material elétrico, hidráulico e pintura para atender as demandas da Câmara Municipal de Piancó-PB.",
+    unidadeGestora: UNIDADE_GESTORA,
+    cnpj: CNPJ,
+    dataPublicacao: "17/08/2026",
+    dataRealizacao: "20/08/2026 às 13:00",
+    participante: "Aguardando participantes",
+    cnpjParticipante: "-",
+    valorProposta: "-",
+    status: "Publicado",
+    arquivos: [
+      {
+        nome: "Aviso de Dispensa 00009-2026 - Material Elétrico",
+        url: "/documents/AVISO DE DISPENSA 00009-2026 MATERIAL ELETRICO.pdf",
+      },
+      {
+        nome: "Edital Dispensa 00009-2026 - Material Elétrico",
+        url: "/documents/EDITAL DISPENSA 00009-2026 MATERIAL ELETRICO.pdf",
+      },
+    ],
+  },
 ]
 
 export function getLicitacaoBySlug(slug: string): Licitacao | undefined {
