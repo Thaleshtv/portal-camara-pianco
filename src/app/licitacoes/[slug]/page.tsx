@@ -45,8 +45,14 @@ export default async function LicitacaoDetalhe({ params }: PageProps) {
     { label: "Nome da unidade gestora", value: licitacao.unidadeGestora },
     { label: "Código da unidade gestora (CNPJ)", value: licitacao.cnpj },
     { label: "Número da licitação", value: licitacao.numero },
+    ...(licitacao.processoAdministrativo
+      ? [{ label: "Processo administrativo", value: licitacao.processoAdministrativo }]
+      : []),
     { label: "Modalidade de licitação", value: licitacao.modalidade },
     { label: "Objeto da licitação", value: licitacao.objetoCompleto },
+    ...(licitacao.valorEstimado
+      ? [{ label: "Valor estimado", value: licitacao.valorEstimado }]
+      : []),
     { label: "Data de Credenciamento (Publicação)", value: licitacao.dataPublicacao },
     { label: "Data de realização", value: licitacao.dataRealizacao },
     { label: "Nome do Participante", value: licitacao.participante },

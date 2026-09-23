@@ -7,9 +7,11 @@ export interface Licitacao {
   id: number
   slug: string
   numero: string
+  processoAdministrativo?: string
   modalidade: string
   objeto: string
   objetoCompleto: string
+  valorEstimado?: string
   unidadeGestora: string
   cnpj: string
   dataPublicacao: string
@@ -320,6 +322,35 @@ export const licitacoes: Licitacao[] = [
       {
         nome: "Edital Dispensa 00011-2026 - Softwares",
         url: "/documents/EDITAL DISPENSA 00011-2026 SOFTWARES.pdf",
+      },
+    ],
+  },
+  {
+    id: 12,
+    slug: "dispensa-de-licitacao-no-00012-2026",
+    numero: "00012/2026",
+    processoAdministrativo: "00018/2026",
+    modalidade: MODALIDADE,
+    objeto: "Contratação de rádio comunitária para transmissão das sessões",
+    objetoCompleto:
+      "Contratação de rádio comunitária para prestação de serviços de transmissão das sessões ordinárias, extraordinárias, solenes, especiais e audiências públicas da Câmara Municipal de Piancó - PB.",
+    valorEstimado: "R$ 19.200,00 (dezenove mil e duzentos reais)",
+    unidadeGestora: UNIDADE_GESTORA,
+    cnpj: CNPJ,
+    dataPublicacao: "28/08/2026",
+    dataRealizacao: "31/08/2026 a 02/09/2026, até às 13:00",
+    participante: "Aguardando participantes",
+    cnpjParticipante: "-",
+    valorProposta: "-",
+    status: "Publicado",
+    arquivos: [
+      {
+        nome: "Aviso de Dispensa 00012-2026 - Rádio Comunitária",
+        url: "/documents/AVISO DE DISPENSA 00012-2026 RADIO COMUNITARIA.pdf",
+      },
+      {
+        nome: "Edital Dispensa 00012-2026 - Rádio Comunitária",
+        url: "/documents/EDITAL DISPENSA 00012-2026 RADIO COMUNITARIA.pdf",
       },
     ],
   },
