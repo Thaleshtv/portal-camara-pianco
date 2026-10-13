@@ -21,3 +21,15 @@ body {
   color: var(--foreground);
   font-family: var(--font-roboto), Arial, Helvetica, sans-serif;
 }
+
+html.alto-contraste body,
+html.alto-contraste body *:not(img):not(iframe):not(svg):not(path) {
+  background-color: #000 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+html.alto-contraste a,
+html.alto-contraste a * {
+  color: #ff0 !important;
+}

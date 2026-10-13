@@ -1,4 +1,4 @@
-import { BsSquareFill, BsClockFill } from "react-icons/bs"
+import { BsSquareFill } from "react-icons/bs"
 
 export default function Contato() {
   return (
@@ -8,10 +8,6 @@ export default function Contato() {
         <div className="bg-white rounded-lg shadow-sm overflow-hidden">
           <div className="border-b border-gray-200 px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <h3 className="text-lg font-semibold text-text-primary">Lista de contatos</h3>
-            <div className="text-text-primary text-sm flex items-center gap-1">
-              <BsClockFill size={12} />
-              <em>Informações atualizadas em: 06/05/2025 - 15:23:12</em>
-            </div>
           </div>
           <div className="p-6">
             {/* Card Câmara Municipal */}

@@ -1,194 +1,125 @@
 "use client"
 
-import { useState } from "react"
+import { useMemo } from "react"
 import Link from "next/link"
-import { BsSearch, BsXCircle, BsDownload, BsFileEarmarkPdf, BsArrowRight } from "react-icons/bs"
-import { licitacoes } from "@/data/licitacoes"
+import { BsArrowRight, BsFileEarmarkPdf } from "react-icons/bs"
+import { FiltrosCard } from "@/components/FiltrosCard"
+import { ListaCard } from "@/components/ListaCard"
+import { useColecao } from "@/hooks/useApi"
+import { useFiltros, type ConfiguracaoFiltros } from "@/hooks/useFiltros"
+import { baixarCsv, type ColunaCsv } from "@/lib/csv"
+import { formatarData, maiorAtualizacao, valoresDistintos } from "@/lib/formato"
+import { tituloLicitacao } from "@/lib/licitacoes"
+import { rotaLicitacao } from "@/lib/rotas"
+import type { Licitacao } from "@/types/api"
+
+const configuracao: ConfiguracaoFiltros<Licitacao> = {
+  obterData: (licitacao) => licitacao.dataPublicacao,
+  campos: [
+    { nome: "modalidade", label: "Modalidade", tipo: "selecao", obterValor: (licitacao) => licitacao.modalidade },
+    { nome: "numero", label: "Número", tipo: "texto", placeholder: "Ex: 00001/2026", obterValor: (licitacao) => licitacao.numero },
+    {
+      nome: "objeto",
+      label: "Objeto",
+      tipo: "texto",
+      placeholder: "Buscar no objeto...",
+      largura: "dupla",
+      obterValor: (licitacao) => `${licitacao.objeto} ${licitacao.objetoCompleto}`,
+    },
+  ],
+}
+
+const colunasCsv: ColunaCsv<Licitacao>[] = [
+  { titulo: "Número", valor: (licitacao) => licitacao.numero },
+  { titulo: "Processo administrativo", valor: (licitacao) => licitacao.processoAdministrativo },
+  { titulo: "Modalidade", valor: (licitacao) => licitacao.modalidade },
+  { titulo: "Objeto", valor: (licitacao) => licitacao.objetoCompleto || licitacao.objeto },
+  { titulo: "Valor estimado", valor: (licitacao) => licitacao.valorEstimado },
+  { titulo: "Data de publicação", valor: (licitacao) => formatarData(licitacao.dataPublicacao) },
+  { titulo: "Data de realização", valor: (licitacao) => licitacao.dataRealizacao },
+  { titulo: "Participante", valor: (licitacao) => licitacao.participante },
+  { titulo: "CNPJ do participante", valor: (licitacao) => licitacao.cnpjParticipante },
+  { titulo: "Valor da proposta", valor: (licitacao) => licitacao.valorProposta },
+  { titulo: "Situação", valor: (licitacao) => licitacao.situacao },
+]
 
 export default function Licitacoes() {
-  const [periodoInicio, setPeriodoInicio] = useState("")
-  const [periodoFim, setPeriodoFim] = useState("")
-  const [modalidade, setModalidade] = useState("")
-  const [exercicio, setExercicio] = useState("")
-  const [objeto, setObjeto] = useState("")
-  const [numero, setNumero] = useState("")
-
-  const handleLimpar = () => {
-    setPeriodoInicio("")
-    setPeriodoFim("")
-    setModalidade("")
-    setExercicio("")
-    setObjeto("")
-    setNumero("")
-  }
+  const { itens, carregando, erro } = useColecao("licitacoes")
+  const controle = useFiltros(itens, configuracao)
+  const opcoes = useMemo(() => ({ modalidade: valoresDistintos(itens, (licitacao) => licitacao.modalidade) }), [itens])
 
   return (
     <section className="py-8">
       <div className="container mx-auto px-4">
-        {/* Card Filtros */}
-        <div className="bg-white rounded-lg shadow-sm mb-6">
-          <div className="border-b border-gray-200 px-6 py-4">
-            <h3 className="text-lg font-semibold text-text-primary">Filtros</h3>
-          </div>
-          <div className="p-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {/* Período */}
-              <div>
-                <label className="block text-sm font-medium text-text-primary mb-1">Período</label>
-                <div className="flex gap-2">
-                  <input
-                    type="date"
-                    value={periodoInicio}
-                    onChange={(e) => setPeriodoInicio(e.target.value)}
-                    className="flex-1 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-primary focus:border-transparent"
-                  />
-                  <input
-                    type="date"
-                    value={periodoFim}
-                    onChange={(e) => setPeriodoFim(e.target.value)}
-                    className="flex-1 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-primary focus:border-transparent"
-                  />
-                </div>
-              </div>
+        <FiltrosCard
+          campos={configuracao.campos}
+          controle={controle}
+          opcoes={opcoes}
+          onExportar={() => baixarCsv("licitacoes", colunasCsv, controle.filtrados)}
+        />
 
-              {/* Modalidade */}
-              <div>
-                <label className="block text-sm font-medium text-text-primary mb-1">Modalidade</label>
-                <select
-                  value={modalidade}
-                  onChange={(e) => setModalidade(e.target.value)}
-                  className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-primary focus:border-transparent"
-                >
-                  <option value="">Selecione...</option>
-                  <option value="pregao-eletronico">Pregão Eletrônico</option>
-                  <option value="pregao-presencial">Pregão Presencial</option>
-                  <option value="concorrencia">Concorrência</option>
-                  <option value="tomada-precos">Tomada de Preços</option>
-                  <option value="convite">Convite</option>
-                  <option value="dispensa">Dispensa de Licitação</option>
-                  <option value="inexigibilidade">Inexigibilidade</option>
-                </select>
-              </div>
-
-              {/* Exercício */}
-              <div>
-                <label className="block text-sm font-medium text-text-primary mb-1">Exercício</label>
-                <input
-                  type="text"
-                  value={exercicio}
-                  onChange={(e) => setExercicio(e.target.value)}
-                  placeholder="Ex: 2025"
-                  className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-primary focus:border-transparent"
-                />
-              </div>
-
-              {/* Número */}
-              <div>
-                <label className="block text-sm font-medium text-text-primary mb-1">Número</label>
-                <input
-                  type="text"
-                  value={numero}
-                  onChange={(e) => setNumero(e.target.value)}
-                  placeholder="Ex: 001/2025"
-                  className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-primary focus:border-transparent"
-                />
-              </div>
-
-              {/* Objeto */}
-              <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-text-primary mb-1">Objeto</label>
-                <input
-                  type="text"
-                  value={objeto}
-                  onChange={(e) => setObjeto(e.target.value)}
-                  placeholder="Buscar no objeto..."
-                  className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-primary focus:border-transparent"
-                />
-              </div>
-            </div>
-
-            {/* Botões */}
-            <div className="flex flex-wrap gap-2 mt-6">
-              <button className="bg-blue-primary text-white px-4 py-2 rounded text-sm hover:bg-blue-primary/90 transition-colors flex items-center gap-2 cursor-pointer">
-                <BsSearch /> PESQUISAR
-              </button>
-              <button
-                onClick={handleLimpar}
-                className="bg-gray-500 text-white px-4 py-2 rounded text-sm hover:bg-gray-600 transition-colors flex items-center gap-2 cursor-pointer"
+        <ListaCard
+          titulo="Licitações"
+          total={controle.filtrados.length}
+          atualizadoEm={maiorAtualizacao(itens)}
+          carregando={carregando}
+          erro={erro}
+          mensagemVazio="Nenhuma licitação encontrada."
+        >
+          <div className="p-6 space-y-4">
+            {controle.filtrados.map((licitacao) => (
+              <div
+                key={licitacao.id}
+                className="border border-gray-200 rounded-lg p-4 hover:border-blue-primary hover:shadow-md transition-all"
               >
-                <BsXCircle /> LIMPAR
-              </button>
-              <button className="bg-green-600 text-white px-4 py-2 rounded text-sm hover:bg-green-700 transition-colors flex items-center gap-2 cursor-pointer">
-                <BsDownload /> EXPORTAÇÃO
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Card Lista de Licitações */}
-        <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-          <div className="border-b border-gray-200 px-6 py-4">
-            <h3 className="text-lg font-semibold text-text-primary">
-              Licitações
-              <span className="text-sm font-normal text-text-primary/60 ml-2">
-                ({licitacoes.length} registros encontrados)
-              </span>
-            </h3>
-          </div>
-          <div className="p-6">
-            <div className="space-y-4">
-              {licitacoes.map((licitacao) => (
-                <div
-                  key={licitacao.id}
-                  className="border border-gray-200 rounded-lg p-4 hover:border-blue-primary hover:shadow-md transition-all"
-                >
-                  <div className="flex flex-col gap-3">
-                    <Link
-                      href={`/licitacoes/${licitacao.slug}`}
-                      className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 group"
-                    >
-                      <h4 className="text-blue-primary font-bold uppercase text-sm group-hover:underline">
-                        Dispensa Nº {licitacao.numero}
-                        <span className="font-normal italic text-xs text-text-primary/60 ml-2 normal-case no-underline">
-                          Publicado em {licitacao.dataPublicacao}
-                        </span>
-                      </h4>
-                      <span className="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full w-fit">
-                        {licitacao.status}
+                <div className="flex flex-col gap-3">
+                  <Link
+                    href={rotaLicitacao(licitacao.slug)}
+                    className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 group"
+                  >
+                    <h4 className="text-blue-primary font-bold uppercase text-sm group-hover:underline">
+                      {tituloLicitacao(licitacao)}
+                      <span className="font-normal italic text-xs text-text-primary/60 ml-2 normal-case no-underline">
+                        Publicado em {formatarData(licitacao.dataPublicacao)}
                       </span>
-                    </Link>
-                    <Link
-                      href={`/licitacoes/${licitacao.slug}`}
-                      className="text-sm text-text-primary/70 hover:text-blue-primary transition-colors"
-                    >
-                      <strong>Modalidade:</strong> {licitacao.modalidade} &bull; <strong>Objeto:</strong> {licitacao.objeto}
-                    </Link>
-                    <div className="flex flex-wrap items-center gap-2">
-                      {licitacao.arquivos.map((arquivo) => (
-                        <a
-                          key={arquivo.url}
-                          href={arquivo.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 bg-red-50 text-red-700 hover:bg-red-100 text-xs font-medium px-3 py-2 rounded transition-colors"
-                        >
-                          <BsFileEarmarkPdf size={14} />
-                          {arquivo.nome}
-                        </a>
-                      ))}
-                      <Link
-                        href={`/licitacoes/${licitacao.slug}`}
-                        className="inline-flex items-center gap-2 bg-blue-primary/10 text-blue-primary hover:bg-blue-primary hover:text-white text-xs font-medium px-3 py-2 rounded transition-colors ml-auto"
+                    </h4>
+                    {licitacao.situacao && (
+                      <span className="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full w-fit">
+                        {licitacao.situacao}
+                      </span>
+                    )}
+                  </Link>
+                  <Link
+                    href={rotaLicitacao(licitacao.slug)}
+                    className="text-sm text-text-primary/70 hover:text-blue-primary transition-colors"
+                  >
+                    <strong>Modalidade:</strong> {licitacao.modalidade} &bull; <strong>Objeto:</strong> {licitacao.objeto}
+                  </Link>
+                  <div className="flex flex-wrap items-center gap-2">
+                    {licitacao.arquivos.map((arquivo) => (
+                      <a
+                        key={arquivo.url}
+                        href={arquivo.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-red-50 text-red-700 hover:bg-red-100 text-xs font-medium px-3 py-2 rounded transition-colors"
                       >
-                        Ver detalhes <BsArrowRight size={14} />
-                      </Link>
-                    </div>
+                        <BsFileEarmarkPdf size={14} />
+                        {arquivo.nome}
+                      </a>
+                    ))}
+                    <Link
+                      href={rotaLicitacao(licitacao.slug)}
+                      className="inline-flex items-center gap-2 bg-blue-primary/10 text-blue-primary hover:bg-blue-primary hover:text-white text-xs font-medium px-3 py-2 rounded transition-colors ml-auto"
+                    >
+                      Ver detalhes <BsArrowRight size={14} />
+                    </Link>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-        </div>
+        </ListaCard>
       </div>
     </section>
   )

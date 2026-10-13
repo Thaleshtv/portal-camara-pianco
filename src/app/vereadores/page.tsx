@@ -1,38 +1,33 @@
+"use client"
+
 import Link from "next/link"
-import { getVereadores } from "@/services"
+import { ListaCard } from "@/components/ListaCard"
+import { useColecao } from "@/hooks/useApi"
+import { rotaVereador } from "@/lib/rotas"
 
 export default function Vereadores() {
-  const vereadores = getVereadores()
+  const { itens: vereadores, carregando, erro } = useColecao("vereadores")
 
   return (
     <section className="py-8">
       <div className="container mx-auto px-4">
-        <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-          <div className="border-b border-gray-200 px-6 py-4">
-            <h3 className="text-lg font-semibold text-text-primary">
-              Lista de vereadores
-              <span className="text-sm font-normal text-text-primary/60 ml-2">
-                <em>Foram encontrados {vereadores.length} registros</em>
-              </span>
-            </h3>
-          </div>
+        <ListaCard
+          titulo="Lista de vereadores"
+          total={vereadores.length}
+          atualizadoEm={null}
+          carregando={carregando}
+          erro={erro}
+          mensagemVazio="Nenhum vereador encontrado."
+        >
           <div className="p-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {vereadores.map((vereador) => (
-                <Link
-                  key={vereador.id}
-                  href={`/vereadores/${vereador.id}`}
-                  className="block"
-                >
+                <Link key={vereador.id} href={rotaVereador(vereador.id)} className="block">
                   <div className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow">
                     <div className="p-4">
                       <div className="flex items-center gap-4">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={vereador.image}
-                          alt={vereador.name}
-                          className="w-[70px] h-[70px] rounded-full object-cover"
-                        />
+                        <img src={vereador.image} alt={vereador.name} className="w-[70px] h-[70px] rounded-full object-cover" />
                         <div>
                           <h4 className="font-semibold text-text-primary hover:text-blue-primary transition-colors">
                             {vereador.name}
@@ -46,7 +41,7 @@ export default function Vereadores() {
               ))}
             </div>
           </div>
-        </div>
+        </ListaCard>
       </div>
     </section>
   )

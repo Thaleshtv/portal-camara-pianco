@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import { rotaVereador } from "@/lib/rotas"
 import { BsSquareFill, BsFileTextFill, BsCheckCircleFill, BsEyeFill, BsPeopleFill, BsPersonFill } from "react-icons/bs"
 
 const mesaDiretora = [
@@ -131,7 +132,7 @@ export default function ACamara() {
                 <BsFileTextFill /> Regimento interno
               </Link>
               <Link
-                href="/leis?car=11"
+                href="/leis"
                 className="bg-blue-primary text-white px-4 py-2 rounded text-sm hover:bg-blue-primary/90 transition-colors flex items-center gap-2"
               >
                 <BsFileTextFill /> Lei orgânica
@@ -184,7 +185,7 @@ export default function ACamara() {
                   {mesaDiretora.map((membro) => (
                     <Link
                       key={membro.id}
-                      href={`/vereadores/${membro.id}`}
+                      href={rotaVereador(membro.id)}
                       className="bg-white border rounded-lg p-4 hover:shadow-md transition-shadow"
                     >
                       <div className="flex items-center gap-4">
@@ -216,7 +217,7 @@ export default function ACamara() {
                   {vereadores.map((vereador) => (
                     <Link
                       key={vereador.id}
-                      href={`/vereadores/${vereador.id}`}
+                      href={rotaVereador(vereador.id)}
                       className="bg-white border rounded-lg p-4 hover:shadow-md transition-shadow"
                     >
                       <div className="flex items-center gap-4">
@@ -249,9 +250,7 @@ export default function ACamara() {
                     <div key={comissao.id} className="bg-white border rounded-lg p-4">
                       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                         <div className="flex-1">
-                          <Link href={`/comissoes/${comissao.id}`} className="text-blue-primary font-bold uppercase text-sm hover:underline">
-                            {comissao.name}
-                          </Link>
+                          <p className="text-blue-primary font-bold uppercase text-sm">{comissao.name}</p>
                           <p className="text-sm text-text-primary/70 mt-1">{comissao.tipo}</p>
                         </div>
                         <div className="flex items-center gap-2">
@@ -266,12 +265,6 @@ export default function ACamara() {
                               />
                             ))}
                           </div>
-                          <Link
-                            href={`/comissoes/${comissao.id}`}
-                            className="bg-blue-primary text-white px-4 py-2 rounded text-sm hover:bg-blue-primary/90 transition-colors flex items-center gap-2"
-                          >
-                            <BsEyeFill /> Acessar
-                          </Link>
                         </div>
                       </div>
                     </div>

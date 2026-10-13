@@ -11,89 +11,14 @@ import {
   FiHome,
   FiChevronDown,
   FiMenu,
-  FiX
+  FiX,
+  FiSearch
 } from "react-icons/fi"
 import Image from "next/image"
-
-interface SubMenuItem {
-  href: string
-  label: string
-  disabled?: boolean
-}
-
-interface MenuItem {
-  label: string
-  href?: string
-  children?: SubMenuItem[]
-  subMenu?: {
-    label: string
-    children: SubMenuItem[]
-  }
-}
-
-const menuItems: MenuItem[] = [
-  {
-    label: "INSTITUCIONAL",
-    children: [
-      { href: "/acamara", label: "SOBRE A CÂMARA" },
-      { href: "/contatos", label: "CONTATOS E ENDEREÇO" },
-      { href: "#", label: "OUVIDORIA", disabled: true },
-      { href: "#", label: "E-SIC", disabled: true },
-      { href: "/leis?car=11", label: "LEI ORGÂNICA" },
-      { href: "/regimento-interno", label: "REGIMENTO INTERNO" },
-      { href: "/dicionario", label: "DICIONÁRIO LEGISLATIVO" },
-      { href: "/papel-vereador", label: "PAPEL DO VEREADOR" },
-      { href: "/papel-camara", label: "PAPEL DA CÂMARA" },
-    ],
-  },
-  {
-    label: "PARLAMENTARES",
-    children: [
-      { href: "/vereadores/24", label: "EDNEY GEOVENNAZ CABRAL BARBOZA" },
-      { href: "/vereadores/25", label: "EDGAR VALDEVINO LIMA" },
-      { href: "/vereadores/39", label: "HELLIANY KENYA LOURENÇO DE ARAÚJO COSTA" },
-      { href: "/vereadores/2", label: "ANTONIO WALLACE PEREIRA MILITÃO" },
-      { href: "/vereadores/3", label: "CHRISTTIANNE VIRGINIA PALITOT REMÎGIO CARVALHO ALMEIDA" },
-      { href: "/vereadores/42", label: "IVANILDO ALVELINO" },
-      { href: "/vereadores/41", label: "JOISLENE LOPES DE SOUSA" },
-      { href: "/vereadores/20", label: "JOSÉ SOARES DE SOUZA" },
-      { href: "/vereadores/40", label: "MARINÊS DE PAULA DA SILVA NICOLAU" },
-      { href: "/vereadores/43", label: "ROSIMARY XAVIER VIEIRA AMÂNCIO" },
-      { href: "/vereadores/6", label: "GERALDO FERREIRA DE SOUZA" },
-    ],
-  },
-  {
-    label: "LEGISLATIVO",
-    children: [
-      { href: "/vereadores", label: "GALERIA DE VEREADORES" },
-      { href: "/mesadiretora", label: "MESA DIRETORA" },
-      { href: "/comissoes", label: "COMISSÕES" },
-      { href: "#", label: "SESSÕES", disabled: true },
-      { href: "#", label: "LEGISLATURA", disabled: true },
-    ],
-  },
-  {
-    label: "TRANSPARÊNCIA",
-    children: [
-      { href: "/acessoainformacao", label: "PORTAL DA TRANSPARÊNCIA" },
-      { href: "/diario-oficial", label: "DIÁRIO OFICIAL DO PODER LEGISLATIVO" },
-      { href: "/licitacoes", label: "LICITAÇÕES" },
-    ],
-    subMenu: {
-      label: "DOCUMENTOS OFICIAIS",
-      children: [
-        { href: "/documentos?tipo=decretos-legislativos", label: "DECRETOS LEGISLATIVOS" },
-        { href: "/documentos?tipo=resolucoes", label: "RESOLUÇÕES" },
-        { href: "/documentos?tipo=atos-mesa-diretora", label: "ATOS DA MESA DIRETORA" },
-        { href: "/documentos?tipo=atos-presidencia", label: "ATOS DA PRESIDÊNCIA" },
-        { href: "/documentos?tipo=portarias-mesa-diretora", label: "PORTARIAS DA MESA DIRETORA" },
-        { href: "/documentos?tipo=portarias-presidencia", label: "PORTARIAS DA PRESIDÊNCIA" },
-        { href: "/documentos?tipo=atas-sessoes-ordinarias", label: "ATAS DAS SESSÕES ORDINÁRIAS" },
-        { href: "/documentos?tipo=atas-sessoes-extraordinarias", label: "ATAS DAS SESSÕES EXTRAORDINÁRIAS" },
-      ],
-    },
-  },
-]
+import { menuItems } from "@/data/menu"
+import { paginasUtilitarias } from "@/data/paginasUtilitarias"
+import { AccessibilityControls } from "@/components/AccessibilityControls"
+import { SearchForm } from "@/components/SearchForm"
 
 export function Menu() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -110,22 +35,36 @@ export function Menu() {
 
   return (
     <header>
+      <a
+        href="#conteudo"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:bg-white focus:text-blue-primary focus:px-4 focus:py-2 focus:rounded focus:shadow-lg"
+      >
+        Ir para o conteúdo
+      </a>
       {/* TopBar */}
       <div className="bg-blue-primary">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-[50px] text-[13px] text-white font-normal">
             {/* Links da esquerda */}
-            <ul className="flex items-center gap-6">
+            <ul className="flex items-center gap-4 xl:gap-6">
               <li>
                 <Link href="/acessoainformacao" className="flex items-center gap-1 hover:opacity-80">
                   <FiInfo size={14} />
                   <span className="hidden sm:inline">Transparência</span>
                 </Link>
               </li>
+              {paginasUtilitarias.map((pagina) => (
+                <li key={pagina.href} className="hidden lg:block">
+                  <Link href={pagina.href} className="hover:opacity-80">{pagina.label}</Link>
+                </li>
+              ))}
+              <li>
+                <AccessibilityControls />
+              </li>
             </ul>
 
             {/* Redes Sociais */}
-            <ul className="flex items-center gap-5">
+            <ul className="flex items-center gap-3 sm:gap-5">
               <li>
                 <a
                   href="https://www.facebook.com/camaramunicipaldepianco/"
@@ -181,14 +120,24 @@ export function Menu() {
             height={100}
             className="object-contain h-[60px] lg:h-[80px] w-auto"
           />
-          {/* Botão Hamburger - Mobile */}
-          <button
-            onClick={() => setSidebarOpen(true)}
-            className="lg:hidden p-2 text-text-primary hover:text-blue-primary transition-colors cursor-pointer"
-            aria-label="Abrir menu"
-          >
-            <FiMenu size={28} />
-          </button>
+          <SearchForm className="hidden lg:flex w-[320px]" />
+          <div className="flex items-center lg:hidden">
+            <Link
+              href="/busca"
+              className="p-2 text-text-primary hover:text-blue-primary transition-colors"
+              aria-label="Pesquisar"
+            >
+              <FiSearch size={24} />
+            </Link>
+            {/* Botão Hamburger - Mobile */}
+            <button
+              onClick={() => setSidebarOpen(true)}
+              className="p-2 text-text-primary hover:text-blue-primary transition-colors cursor-pointer"
+              aria-label="Abrir menu"
+            >
+              <FiMenu size={28} />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -350,6 +299,19 @@ export function Menu() {
               )}
             </div>
           ))}
+
+          <div className="border-t border-gray-100 py-2">
+            {paginasUtilitarias.map((pagina) => (
+              <Link
+                key={pagina.href}
+                href={pagina.href}
+                onClick={closeSidebar}
+                className="block px-4 py-2 text-text-primary/80 text-xs hover:bg-gray-100 hover:text-blue-primary transition-colors"
+              >
+                {pagina.label.toUpperCase()}
+              </Link>
+            ))}
+          </div>
 
           {/* Redes Sociais no Sidebar */}
           <div className="border-t border-gray-100 px-4 py-4 mt-2">

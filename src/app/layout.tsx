@@ -3,6 +3,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import { Menu } from "@/components/Menu";
 import { Footer } from "@/components/Footer";
+import { CookieBanner } from "@/components/CookieBanner";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -33,10 +34,11 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={`${roboto.variable} antialiased min-h-screen flex flex-col`}>
         <Menu />
-        <main className="flex-1">
+        <main id="conteudo" tabIndex={-1} className="flex-1 focus:outline-none">
           {children}
         </main>
         <Footer />
+        <CookieBanner />
       </body>
     </html>
   );

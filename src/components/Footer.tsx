@@ -12,6 +12,21 @@ import {
 } from "react-icons/fi"
 import { BsPostcard } from "react-icons/bs"
 
+const linksRapidos = [
+  { href: "/acessoainformacao", label: "Transparência" },
+  { href: "/esic", label: "E-SIC" },
+  { href: "/ouvidoria", label: "Ouvidoria" },
+  { href: "/diario-oficial", label: "Publicações" },
+  { href: "/vereadores", label: "Vereadores" },
+  { href: "/mesadiretora", label: "Mesa Diretora" },
+  { href: "/comissoes", label: "Comissões" },
+  { href: "/estrutura-organizacional", label: "Estrutura Organizacional" },
+  { href: "/sessoes#ordem-do-dia", label: "Ordem do Dia" },
+  { href: "/sessoes#calendario", label: "Calendário de Sessões" },
+  { href: "/informa", label: "Notícias" },
+  { href: "/carta-de-servicos", label: "Carta de Serviços" },
+]
+
 export function Footer() {
   return (
     <footer className="bg-blue-primary text-white">
@@ -82,6 +97,14 @@ export function Footer() {
       {/* Seção Redes Sociais e Copyright */}
       <div className="bg-blue-primary/90 py-4">
         <div className="container mx-auto px-4">
+          <ul className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-[13px] mb-6">
+            {linksRapidos.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="hover:underline">{link.label}</Link>
+              </li>
+            ))}
+          </ul>
+
           {/* Redes Sociais */}
           <div className="flex justify-center gap-6 mb-4">
             <a

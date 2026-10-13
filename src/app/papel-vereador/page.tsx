@@ -26,7 +26,7 @@ export default function PapelVereador() {
               </p>
               <p className="text-justify text-[15px] font-light leading-relaxed text-text-primary mt-3">
                 E como um vereador pode representar, na prática, os eleitores? Pode-se dizer que a atividade mais importante do dia a dia de um vereador é legislar. O que significa isso? Podemos entender pelo verbo legislar todas as ações relacionadas ao tratamento do corpo de leis que regem as ações do poder público e as relações sociais no nosso país. O Brasil tem como tradição fazer a regulação de assuntos importantes para a vida em sociedade por meio de leis escritas, seguindo princípios que remontam ao Direito Romano. É por isso que temos uma grande{" "}
-                <em className="text-blue-primary">Constituição</em>, com centenas de artigos, parágrafos e alíneas. E não acaba por aí: a Constituição serve apenas para guiar as leis "menores", mais específicas, que dizem respeito a uma grande variedade de assuntos.
+                <em className="text-blue-primary">Constituição</em>, com centenas de artigos, parágrafos e alíneas. E não acaba por aí: a Constituição serve apenas para guiar as leis &quot;menores&quot;, mais específicas, que dizem respeito a uma grande variedade de assuntos.
               </p>
               <p className="text-justify text-[15px] font-light leading-relaxed text-text-primary mt-3">
                 Dessa forma, podemos citar como ações típicas que estão ao alcance de um vereador criar, extinguir e emendar leis, da maneira que ele julgar que seja mais adequada ao interesse público.
