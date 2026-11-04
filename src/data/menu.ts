@@ -69,6 +69,7 @@ export const menuItems: MenuItem[] = [
     subMenu: {
       label: "DOCUMENTOS OFICIAIS",
       children: [
+        { href: "/documentos?tipo=editais", label: "EDITAIS" },
         { href: "/documentos?tipo=decretos-legislativos", label: "DECRETOS LEGISLATIVOS" },
         { href: "/documentos?tipo=resolucoes", label: "RESOLUÇÕES" },
         { href: "/documentos?tipo=atos-mesa-diretora", label: "ATOS DA MESA DIRETORA" },

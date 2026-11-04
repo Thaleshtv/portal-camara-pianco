@@ -44,6 +44,7 @@ export interface Norma extends RegistroBase {
 }
 
 export type TipoDocumento =
+  | "editais"
   | "decretos-legislativos"
   | "resolucoes"
   | "atos-mesa-diretora"
