@@ -1,7 +1,10 @@
+import { SITE } from "@/data/site"
+
 export interface SubMenuItem {
   href: string
   label: string
   disabled?: boolean
+  externo?: boolean
 }
 
 export interface MenuItem {
@@ -57,6 +60,7 @@ export const menuItems: MenuItem[] = [
       { href: "/sessoes#calendario", label: "CALENDÁRIO DE SESSÕES" },
       { href: "/sessoes#ordem-do-dia", label: "ORDEM DO DIA" },
       { href: "/legislatura", label: "LEGISLATURA" },
+      { href: SITE.eLegislativoUrl, label: "E-LEGISLATIVO", externo: true },
     ],
   },
   {

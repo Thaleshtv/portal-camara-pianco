@@ -5,6 +5,7 @@ export const SITE = {
   endereco: "Rua Antônio Brasilino, 121 - Centro, Piancó/PB - CEP 58.765-000",
   horario: "De segunda a sexta, das 08:00 às 12:00",
   youtubeUrl: "https://www.youtube.com/@piancocamaramunicipal6187",
+  eLegislativoUrl: "https://e-legislativo.camarapianco.com.br/portal",
   transparenciaUrl:
     "https://portaldatransparencia.publicsoft.com.br/sistemas/ContabilidadePublica/accessdirect.php?link=N9U5",
   radarTransparenciaUrl: "https://radardatransparencia.atricon.org.br/",

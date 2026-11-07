@@ -162,7 +162,7 @@ export function Menu() {
                         {child.disabled ? (
                           <span className="block px-4 py-2 text-gray-400 cursor-not-allowed">{child.label}</span>
                         ) : (
-                          <Link href={child.href} className="block px-4 py-2 hover:bg-gray-100">{child.label}</Link>
+                          <Link href={child.href} target={child.externo ? "_blank" : undefined} rel={child.externo ? "noopener noreferrer" : undefined} className="block px-4 py-2 hover:bg-gray-100">{child.label}</Link>
                         )}
                       </li>
                     ))}
@@ -255,6 +255,8 @@ export function Menu() {
                       ) : (
                         <Link
                           href={child.href}
+                          target={child.externo ? "_blank" : undefined}
+                          rel={child.externo ? "noopener noreferrer" : undefined}
                           onClick={closeSidebar}
                           className="block px-6 py-2.5 text-text-primary/80 text-xs hover:bg-gray-200 hover:text-blue-primary transition-colors"
                         >

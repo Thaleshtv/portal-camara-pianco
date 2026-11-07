@@ -106,6 +106,7 @@ const quickLinks: QuickLink[] = [
   { href: "/acessoainformacao", icon: BsFileTextFill, label: "Transparência" },
   { href: "/licitacoes", icon: BsFileEarmarkPdfFill, label: "Licitações" },
   { href: SITE.youtubeUrl, icon: BsYoutube, label: "Sessões ao Vivo", externo: true },
+  { href: SITE.eLegislativoUrl, icon: BsBoxArrowUpRight, label: "E-Legislativo", externo: true },
   { href: "/esic", icon: BsInfoCircleFill, label: "E-SIC" },
   { href: "/ouvidoria", icon: BsMegaphoneFill, label: "Ouvidoria" },
   { href: "/mesadiretora", icon: BsPersonBadgeFill, label: "Mesa Diretora" },
