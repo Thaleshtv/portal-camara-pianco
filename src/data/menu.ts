@@ -74,6 +74,9 @@ export const menuItems: MenuItem[] = [
       label: "DOCUMENTOS OFICIAIS",
       children: [
         { href: "/documentos?tipo=editais", label: "EDITAIS" },
+        { href: "/documentos?tipo=avisos-institucionais", label: "AVISOS INSTITUCIONAIS" },
+        { href: "/documentos?tipo=oficios-circulares", label: "OFÍCIOS CIRCULARES" },
+        { href: "/documentos?tipo=oficios", label: "OFÍCIOS" },
         { href: "/documentos?tipo=decretos-legislativos", label: "DECRETOS LEGISLATIVOS" },
         { href: "/documentos?tipo=resolucoes", label: "RESOLUÇÕES" },
         { href: "/documentos?tipo=atos-mesa-diretora", label: "ATOS DA MESA DIRETORA" },

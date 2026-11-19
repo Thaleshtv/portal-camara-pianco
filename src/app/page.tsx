@@ -1,6 +1,7 @@
 "use client"
 
 import { useRef } from "react"
+import Image from "next/image"
 import Link from "next/link"
 import type { IconType } from "react-icons"
 import { BsPeopleFill, BsMegaphoneFill, BsFileTextFill, BsFileEarmarkPdfFill, BsPersonLinesFill, BsFilePdfFill, BsBoxArrowUpRight, BsCheckCircleFill, BsChevronLeft, BsChevronRight, BsYoutube, BsInfoCircleFill, BsJournalText, BsBookFill, BsCalendarEventFill, BsPersonBadgeFill, BsDownload } from "react-icons/bs"
@@ -128,23 +129,65 @@ export default function Home() {
 
   return (
     <>
-      <section className="bg-[#D0DEEC] py-6">
+      <section className="relative overflow-hidden">
+        <Image
+          src="/assets/cidade-pianco.jpeg"
+          alt="Vista da cidade de Piancó"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[center_40%]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0c3349]/95 via-[#14506f]/80 to-[#267EAD]/40" />
+        <div className="relative container mx-auto px-4 pt-14 pb-28 lg:pt-20 lg:pb-36">
+          <p className="text-white/80 text-sm lg:text-base uppercase tracking-[0.2em] mb-3">Portal oficial</p>
+          <h1 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight max-w-2xl">
+            Câmara Municipal de Piancó
+          </h1>
+          <p className="text-white/85 text-base lg:text-lg mt-4 max-w-xl">
+            Acompanhe as sessões, leis, publicações e o trabalho dos vereadores do Poder Legislativo de Piancó.
+          </p>
+          <div className="flex flex-wrap gap-3 mt-8">
+            <a
+              href={SITE.youtubeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-white text-blue-primary font-semibold text-sm px-5 py-3 rounded-lg hover:bg-white/90 transition-colors"
+            >
+              <BsYoutube size={18} /> Sessões ao vivo
+            </a>
+            <a
+              href={SITE.eLegislativoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 border border-white/70 text-white font-semibold text-sm px-5 py-3 rounded-lg hover:bg-white/10 transition-colors"
+            >
+              <BsBoxArrowUpRight size={16} /> Acessar o E-Legislativo
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative z-10 -mt-20 lg:-mt-24 pb-4">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-3">
-            {quickLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                target={link.externo ? "_blank" : undefined}
-                rel={link.externo ? "noopener noreferrer" : undefined}
-                className="bg-blue-primary hover:bg-blue-primary/90 transition-colors rounded-lg w-full sm:w-[calc(50%-0.375rem)] lg:w-[200px]"
-              >
-                <div className="flex items-center justify-center gap-2 px-5 py-4 text-white">
-                  <link.icon size={20} />
-                  <h6 className="text-sm font-medium">{link.label}</h6>
-                </div>
-              </Link>
-            ))}
+          <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6">
+            <h2 className="text-lg font-semibold text-text-primary mb-4 px-1">Acesso rápido</h2>
+            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-2 sm:gap-3">
+              {quickLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  target={link.externo ? "_blank" : undefined}
+                  rel={link.externo ? "noopener noreferrer" : undefined}
+                  className="group flex flex-col items-center justify-center gap-2 text-center rounded-xl border border-gray-100 bg-[#F5F9FC] px-1.5 py-3 sm:px-2 sm:py-4 hover:border-blue-primary/30 hover:bg-white hover:shadow-md transition-all"
+                >
+                  <span className="flex items-center justify-center w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-blue-primary/10 text-blue-primary group-hover:bg-blue-primary group-hover:text-white transition-colors">
+                    <link.icon size={20} />
+                  </span>
+                  <span className="text-xs sm:text-[13px] font-medium text-text-primary leading-tight">{link.label}</span>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>

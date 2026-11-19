@@ -2,6 +2,9 @@ import type { TipoDocumento } from "@/types/api"
 
 export const TIPOS_DOCUMENTOS: Record<TipoDocumento, string> = {
   "editais": "Editais",
+  "avisos-institucionais": "Avisos Institucionais",
+  "oficios-circulares": "Ofícios Circulares",
+  "oficios": "Ofícios",
   "decretos-legislativos": "Decretos Legislativos",
   "resolucoes": "Resoluções",
   "atos-mesa-diretora": "Atos da Mesa Diretora",

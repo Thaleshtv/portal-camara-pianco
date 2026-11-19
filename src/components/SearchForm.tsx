@@ -27,7 +27,7 @@ export function SearchForm({ initialValue = "", className = "" }: SearchFormProp
         value={termo}
         onChange={(e) => setTermo(e.target.value)}
         placeholder="Pesquisar..."
-        className="flex-1 min-w-0 border border-gray-300 rounded-l px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-primary focus:border-transparent"
+        className="flex-1 min-w-0 bg-white border border-gray-300 rounded-l px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-primary focus:border-transparent"
       />
       <button
         type="submit"
